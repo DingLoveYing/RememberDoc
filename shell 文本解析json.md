@@ -1,5 +1,5 @@
-## 工具
-使用jq   sudo apt install jq
+## 工具 jq   
+* 下载　sudo apt install jq
 
 ## 使用方法
 
