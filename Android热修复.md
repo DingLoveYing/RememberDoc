@@ -1,5 +1,9 @@
 ## Android热修复方案比较
 
+作者：恶魔殿下_HIM
+链接：[https://www.jianshu.com/p/eec0ab6800a4](https://www.jianshu.com/p/eec0ab6800a4)
+來源：简书
+
 热修复的特点：无需重新发版，实时高效热修复；用户无感知修复，无需下载新的应用，代价小；
 修复成功率高，把损失降到最低。
 
@@ -153,7 +157,5 @@ Gradle插件要做的事就是拿到所有class，在其构造函数中注入Hac
 1.不支持四大组件的添加
 2.需要应用重启后生效
 ```
-作者：恶魔殿下_HIM
-链接：[https://www.jianshu.com/p/eec0ab6800a4](https://www.jianshu.com/p/eec0ab6800a4)
-來源：简书
+
 
