@@ -1,4 +1,4 @@
-## Nginx配置文件（nginx.conf）配置详解
+# Nginx配置文件（nginx.conf）配置详解
 
 ##　Nginx的配置文件nginx.conf配置详解如下：
 

@@ -1,4 +1,4 @@
-## GitHub构建Maven
+# GitHub构建Maven
 
 ### 1. 在github创建respository, 名称 maven_test
 
