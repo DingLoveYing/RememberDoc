@@ -14,8 +14,7 @@ ps：每日一个知识点，要求不高，但是要把基本内容了解清楚
   3. 在SystemServer中会启动一系列的服务startBootstrapServices(); (例如：ActivityManagerService，PackageManagerService等等) --> startCoreServices();（例如 ：StartBatteryService、WebViewUpdateService等）  --> startOtherServices();（例如： StartAccountManagerService、StartInputManagerService、WindowManagerService等）。
   4. 启动一个Home应用程序Launcher。应用程序Launcher在启动过程中会PackageManagerService返回系统中已经安装的应用程序的信息，并将这些信息封装成一个快捷图标列表显示在系统屏幕上，这样用户可以通过点击这些快捷图标来启动相应的应用程序。(在SystemServer把一些服务启动完成之后，会调用mActivityManagerService.systemReady()方法，其中会调用startHomeActivityLocked() --> getHomeIntent()  --> startHomeActivity)。
   
-```
-1. 系统启动时init进程会创建Zygote进程，Zygote进程负责后续Android应用程序框架层的其它进程的创建和启动工作。（可以使用ps查看）
+```1. 系统启动时init进程会创建Zygote进程，Zygote进程负责后续Android应用程序框架层的其它进程的创建和启动工作。（可以使用ps查看）
 2. Zygote进程会首先创建一个SystemServer进程，SystemServer进程负责启动系统的关键服务，如包管理服务PackageManagerService和应用程序组件管理服务ActivityManagerService。
 3. 当我们需要启动一个Android应用程序时，ActivityManagerService会通过Socket进程间通信机制，通知Zygote进程为这个应用程序创建一个新的进程。
 ```
