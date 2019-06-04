@@ -22,8 +22,34 @@ ps：每日一个知识点，要求不高，但是要把基本内容了解清楚
   
 #### 2. 点击Launcher上的图标的启动过程  
    点击事件开始代码如下：/Volumes/android/WORKING_DIRECTORY/packages/apps/Launcher3/src/com/android/launcher3/ItemClickHandler
-```那么我们就从点击事件开始代码如下：
-/Volumes/android/WORKING_DIRECTORY/packages/apps/Launcher3/src/com/android/launcher3/ItemClickHandler
+```private static void onClick(View v) {
+        // Make sure that rogue clicks don't get through while allapps is launching, or after the
+        // view has detached (it's possible for this to happen if the view is removed mid touch).
+        if (v.getWindowToken() == null) {
+            return;
+        }
+
+        Launcher launcher = Launcher.getLauncher(v.getContext());
+        if (!launcher.getWorkspace().isFinishedSwitchingState()) {
+            return;
+        }
+
+        Object tag = v.getTag();
+        if (tag instanceof ShortcutInfo) {
+            onClickAppShortcut(v, (ShortcutInfo) tag, launcher);
+        } else if (tag instanceof FolderInfo) {
+            if (v instanceof FolderIcon) {
+                onClickFolderIcon(v);
+            }
+        } else if (tag instanceof AppInfo) {
+            startAppShortcutOrInfoActivity(v, (AppInfo) tag, launcher);
+        } else if (tag instanceof LauncherAppWidgetInfo) {
+            if (v instanceof PendingAppWidgetHostView) {
+                onClickPendingWidget((PendingAppWidgetHostView) v, launcher);
+            }
+        }
+    }
+
 ```
 
 
