@@ -55,6 +55,56 @@ private static void onClick(View v) {
     }
 
 ```
+这里Launcher中条目点击回调接口是ItemClickHandler，在onClick中我们看到会调用startAppShortcutOrInfoActivity函数一路追下去最终会调用父类BaseDraggingActivity的startActivitySafely：
+
+```
+public boolean startActivitySafely(View v, Intent intent, ItemInfo item) {
+        if (mIsSafeModeEnabled && !Utilities.isSystemApp(this, intent)) {
+            Toast.makeText(this, R.string.safemode_shortcut_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Only launch using the new animation if the shortcut has not opted out (this is a
+        // private contract between launcher and may be ignored in the future).
+        boolean useLaunchAnimation = (v != null) &&
+                !intent.hasExtra(INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION);
+        Bundle optsBundle = useLaunchAnimation
+                ? getActivityLaunchOptionsAsBundle(v)
+                : null;
+
+        UserHandle user = item == null ? null : item.user;
+
+        // Prepare intent
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (v != null) {
+            intent.setSourceBounds(getViewBounds(v));
+        }
+        try {
+            boolean isShortcut = Utilities.ATLEAST_MARSHMALLOW
+                    && (item instanceof ShortcutInfo)
+                    && (item.itemType == Favorites.ITEM_TYPE_SHORTCUT
+                    || item.itemType == Favorites.ITEM_TYPE_DEEP_SHORTCUT)
+                    && !((ShortcutInfo) item).isPromise();
+            if (isShortcut) {
+                // Shortcuts need some special checks due to legacy reasons.
+                startShortcutIntentSafely(intent, optsBundle, item);
+            } else if (user == null || user.equals(Process.myUserHandle())) {
+                // Could be launching some bookkeeping activity
+                startActivity(intent, optsBundle);
+            } else {
+                LauncherAppsCompat.getInstance(this).startActivityForProfile(
+                        intent.getComponent(), user, intent.getSourceBounds(), optsBundle);
+            }
+            getUserEventDispatcher().logAppLaunch(v, intent);
+            return true;
+        } catch (ActivityNotFoundException|SecurityException e) {
+            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Unable to launch. tag=" + item + " intent=" + intent, e);
+        }
+        return false;
+    }
+```
+[Android点击Launcher应用图标的应用程序启动过程（栈和进程的创建](https://www.jianshu.com/p/ae7c130ea3cb)
 
 
 #### 3. Manager 与 service
