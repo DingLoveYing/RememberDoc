@@ -104,7 +104,10 @@ public boolean startActivitySafely(View v, Intent intent, ItemInfo item) {
         return false;
     }
 ```
-[Android点击Launcher应用图标的应用程序启动过程（栈和进程的创建](https://www.jianshu.com/p/ae7c130ea3cb)
+然后调用startActivity方法，该方法中会ActivityManagerProxy,调用startActivity向AMS发送请求，然后AMS处理startActivity。
+[Android点击Launcher应用图标的应用程序启动过程（栈和进程的创建)](https://www.jianshu.com/p/ae7c130ea3cb)
+
+##### Activity的启动
 
 
 #### 3. Manager 与 service
