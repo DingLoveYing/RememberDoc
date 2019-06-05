@@ -1,5 +1,5 @@
 ## Android
-###Java基础
+### Java基础
 * Java Object类方法
 
 * HashMap原理，Hash冲突，并发集合，线程安全集合及实现原理
@@ -61,7 +61,7 @@
 
 * 数据库基础知识：多表查询、索引、数据库事务
 
-###Android基础
+### Android基础
 
 * Application生命周期
 
@@ -166,7 +166,7 @@
 
 * Android SQLite的使用入门
 
-###Android开发高级
+### Android开发高级
 
 ```
 	引子：Android高级工程师招聘要求：
@@ -176,10 +176,10 @@
 	4. 对Android性能优化，安全，软件加固，自动化测试有深刻认识;
 	5. 博客，开源项目
 ```
-####Android技术难点
+#### Android技术难点
 AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等。这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。
 
-#####Android框架层源码掌握
+##### Android框架层源码掌握
 Android框架层有很多东西，以下几个是高级程序员必须要掌握的：
 
 * Android包管理机制，核心PackageManagerService
@@ -192,7 +192,7 @@ Android框架层有很多东西，以下几个是高级程序员必须要掌握�
 
 * Context关联类
 
-####各种原理，经典第三方库源码系列
+#### 各种原理，经典第三方库源码系列
 * 自定义LayoutManager，RecyclerView中如何自定义LayoutManager
 
 * VLayout实现原理，即如何自定义LayoutManager
@@ -215,16 +215,16 @@ Android框架层有很多东西，以下几个是高级程序员必须要掌握�
 
 * 组件化原理和解决方案
 
-####Android进程通信以及多进程开发
+#### Android进程通信以及多进程开发
 Android 多进程和Application关系
 
 经典解决方案：[多进程通信解决方案：Andromeda](https://mp.weixin.qq.com/s/PZs1wss3PizqSE8U2RGXYw)
 
-####Android动画机制    Android绘图原理
+#### Android动画机制    Android绘图原理
 经典学习资料：[HenCoder: 给高级Android工程师的进阶手册](https://hencoder.com/?utm_source=gank&utm_medium=website&utm_campaign=rxjava)
 
 
-####Android页面恢复
+#### Android页面恢复
 Android的页面恢复采用以下两个方法：
 
 onSaveInstanceState(Bundle outState)
@@ -239,7 +239,7 @@ onSaveInstanceState: 当Activity容易被系统销毁时，会触发该方法。
 
 有电话来了等附加操作
 
-####混合开发及Android WebView应用
+#### 混合开发及Android WebView应用
 混合开发涉及到的知识点主要包括：
 
 APP调用WebView加载url
@@ -252,7 +252,7 @@ APP调用WebView加载url
 
 对通信中间件原理理解：[GitHub：webprogress](https://github.com/xudjx/webprogress)
 
-####Gradle，自动化构建，持续集成相关
+#### Gradle，自动化构建，持续集成相关
 Android系统
 Android Studio编译过程
 其中使用到的编译工具：
@@ -268,11 +268,11 @@ aapt、aidl、Java Compiler、dex、 zipalign
 6. 通过Jarsigner工具，对上面的apk进行debug或release签名
 7. 通过zipalign工具，将签名后的apk进行对齐处理。
 
-####App启动加载过程
+#### App启动加载过程
 
 Android虚拟机 Android App运行的沙箱原则
 
-###Android架构
+### Android架构
 
 ```
 在Android源码中最重要的三个类：ActivityManagerService／PackageManagerService／View，推荐大家周末的时候可以去阅读下这部分的源码，阅读源码能提高我们今后设计架构自己代码的能力，同时也能从底层了解整个android系统的运行原理，其他一些比如主线程的消息循环、主线程如何和AMS如何跨进程交互、SystemServer进程中的各种Service的工作方式、AsyncTask的工作原理等。这些知识也是作为一个Android高级开发工程师必须掌握的，不能整天沉溺于ui和四大组件的交互，要站在更高的角度去考虑Android的有些问题。
@@ -292,12 +292,12 @@ Android虚拟机 Android App运行的沙箱原则
 
 * 跨平台开发：Flutter、ReactNative（RN未来要黄，了解一下就好）
 
-####Android优化
+#### Android优化
 android优化.jpg
 
-###移动开发外围
+### 移动开发外围
 
-####服务器开发相关
+#### 服务器开发相关
 
 * SpringBoot技术
 
@@ -315,7 +315,7 @@ android优化.jpg
 
 * 监控、日志分析技术
 
-####前端开发相关
+#### 前端开发相关
 前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。
 
 * 核心必备：HTML、CSS、JavaScript
@@ -328,7 +328,7 @@ android优化.jpg
 
 * 高级技能：框架原理源码研究
 
-####开发调试各种工具
+#### 开发调试各种工具
 
 * 性能分析工具：Memory Monitor
 
